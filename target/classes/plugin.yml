@@ -1,0 +1,19 @@
+name: Core
+version: '1.0-SNAPSHOT'
+main: me.vinzoperez.core.Core
+api-version: '1.21'
+commands:
+  explodeEntity:
+    description: "Spawn an exploding entity"
+    usage: "/explodeEntity [set/baby] [entityType]"
+    aliases: [eEntity]
+    permission: core.command.explodeEntity
+    permission-message: "You do not have permission to use this command"
+  GotMyLast:
+    description: "Got My Last Minigame"
+    usage: "/GotMyLast [help]"
+permissions:
+  core.command.explodeEntity:
+    default: op
+  core.command.use:
+    default: op

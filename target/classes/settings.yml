@@ -1,0 +1,8 @@
+Explosion:
+  # The entity that is going to explode
+  entity-type: BAT
+
+GotMyLast:
+  Is-Active: false
+  Current-Tagger: ""
+  Knockback-Strength: 1.5

@@ -1,0 +1,14 @@
+name: Core
+version: '1.0-SNAPSHOT'
+main: me.vinzoperez.core.Core
+api-version: '1.21'
+commands:
+
+  Tag:
+    description: "Tag Minigame"
+    usage: "/Tag [help]"
+permissions:
+  core.command.explodeEntity:
+    default: op
+  core.command.use:
+    default: op
