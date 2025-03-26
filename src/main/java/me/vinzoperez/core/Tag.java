@@ -2,15 +2,15 @@ package me.vinzoperez.core;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Core extends JavaPlugin {
+public final class Tag extends JavaPlugin {
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new TagListener(), this);
 
-        getCommand("tag").setExecutor(new GotMyLastCommand());
+        getCommand("tag").setExecutor(new TagCommand());
 
-        GotMyLastSettings.getInstance().load();
+        TagSettings.getInstance().load();
     }
 
     @Override
@@ -18,8 +18,8 @@ public final class Core extends JavaPlugin {
 
     }
 
-    public static Core getInstance()
+    public static Tag getInstance()
     {
-        return getPlugin(Core.class);
+        return getPlugin(Tag.class);
     }
 }

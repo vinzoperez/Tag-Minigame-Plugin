@@ -4,8 +4,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 
-public class GotMyLastSettings {
-    private final static GotMyLastSettings instance = new GotMyLastSettings();
+public class TagSettings {
+    private final static TagSettings instance = new TagSettings();
 
     private File file;
     private YamlConfiguration config;
@@ -14,16 +14,16 @@ public class GotMyLastSettings {
     private String currentTagger;
     private double knockbackStrength;
 
-    private GotMyLastSettings(){
+    private TagSettings(){
 
     }
 
     public void load() {
-        file = new File(Core.getInstance().getDataFolder(), "settings.yml");
+        file = new File(Tag.getInstance().getDataFolder(), "settings.yml");
 
         if (!file.exists())
         {
-            Core.getInstance().saveResource("settings.yml", false);
+            Tag.getInstance().saveResource("settings.yml", false);
 
         }
 
@@ -91,7 +91,7 @@ public class GotMyLastSettings {
     public double getKnockbackStrength() {
         return knockbackStrength;
     }
-    public static GotMyLastSettings getInstance() {
+    public static TagSettings getInstance() {
         return instance;
     }
 

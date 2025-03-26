@@ -1,6 +1,6 @@
-name: Core
+name: Tag
 version: '1.0-SNAPSHOT'
-main: me.vinzoperez.core.Core
+main: me.vinzoperez.core.Tag
 api-version: '1.21'
 commands:
 
