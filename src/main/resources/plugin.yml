@@ -1,5 +1,5 @@
 name: Tag
-version: '1.0-SNAPSHOT'
+version: '1.0'
 main: me.vinzoperez.core.Tag
 api-version: '1.21'
 commands:

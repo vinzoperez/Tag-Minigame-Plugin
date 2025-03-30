@@ -1,7 +1,4 @@
-me\vinzoperez\core\GotMyLastCommand.class
-me\vinzoperez\core\ExplodingCommand.class
-me\vinzoperez\core\GotMyLastSettings.class
-me\vinzoperez\core\ExplodingSettings.class
-me\vinzoperez\core\Core.class
-me\vinzoperez\core\EntityListener.class
+me\vinzoperez\core\Tag.class
+me\vinzoperez\core\TagCommand.class
+me\vinzoperez\core\TagSettings.class
 me\vinzoperez\core\TagListener.class
