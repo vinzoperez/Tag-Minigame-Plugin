@@ -1,7 +1,6 @@
 package me.vinzoperez.core;
 
 
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -24,8 +23,9 @@ public class TagCommand implements CommandExecutor, TabExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         MiniMessage mm = MiniMessage.miniMessage();
         String WARN_MESSAGE = "<grey><</grey><red>!</red><grey>></grey> "; // <!>
-        Component message;
-        if (args.length > 1)
+
+        // No Arguments Provided
+        if (args.length == 0)
         {
             sender.sendMessage("/tag start -- Starts The MiniGame");
             sender.sendMessage("/tag stop -- Stops The MiniGame");
@@ -39,19 +39,16 @@ public class TagCommand implements CommandExecutor, TabExecutor {
             if (args[0].equalsIgnoreCase("start"))
             {
                 if (TagSettings.getInstance().getStatus()) {
-                    message = mm.deserialize(WARN_MESSAGE + "<green>Tag MiniGame has already started.</green>");
-                    sender.sendMessage(message);
+                    sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<green>Tag MiniGame has already started.</green>"));
 
                 } else {
                     TagSettings.getInstance().setStatus(true);
-                    message = mm.deserialize(WARN_MESSAGE + "<green>Tag MiniGame Has Started! <grey><</grey><red>!</red><grey>></grey>");
-                    Bukkit.broadcast(message);
+                    Bukkit.broadcast(mm.deserialize(WARN_MESSAGE + "<green>Tag MiniGame Has Started! <grey><</grey><red>!</red><grey>></grey>"));
 
                 }
 
             } else if (args[0].equalsIgnoreCase("stop")) {
-                message = mm.deserialize(WARN_MESSAGE + "<red><bold>Tag MiniGame has been stopped</bold></red>");
-                Bukkit.broadcast(message);
+                Bukkit.broadcast(mm.deserialize(WARN_MESSAGE + "<red><bold>Tag MiniGame has been stopped</bold></red>"));
                 TagSettings.getInstance().setStatus(false);
             }else if (args[0].equalsIgnoreCase("newtagger"))
             {
@@ -60,11 +57,9 @@ public class TagCommand implements CommandExecutor, TabExecutor {
 
                     Player randomTagger = onlinePlayers.get(new Random().nextInt(onlinePlayers.size()));
                     TagSettings.getInstance().setTagger(randomTagger.getName());
-                    message = mm.deserialize(WARN_MESSAGE+ "<red>" + randomTagger.getName() + "</red><green> is the first tagger!</green>");
-                    Bukkit.broadcast(message);
+                    Bukkit.broadcast(mm.deserialize(WARN_MESSAGE+ "<red>" + randomTagger.getName() + "</red><green> is the first tagger!</green>"));
                 } else {
-                    message = mm.deserialize(WARN_MESSAGE+ "<red>Error: Is the tag minigame started? /tag start");
-                    sender.sendMessage(message);
+                    sender.sendMessage(mm.deserialize(WARN_MESSAGE+ "<red>Error: Is the tag minigame started? /tag start"));
                 }
 
             }
@@ -72,19 +67,17 @@ public class TagCommand implements CommandExecutor, TabExecutor {
                 if (TagSettings.getInstance().getStatus()) {
                     if (TagSettings.getInstance().getTagger() != null)
                     {
-                        message = mm.deserialize(WARN_MESSAGE + "<green>The current tagger is </green><red>" + TagSettings.getInstance().getTagger() + "</red>");
-
+                        sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<green>The current tagger is </green><red>" + TagSettings.getInstance().getTagger() + "</red>"));
                     } else {
-                        message = mm.deserialize(WARN_MESSAGE + "<red> No active tagger please use /tag newtagger ");
+                        sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<red> No active tagger please use /tag newtagger "));
                     }
 
-                    sender.sendMessage(message);
+
                 }
 
             } else if (args[0].equalsIgnoreCase("stats"))
             {
-                message = mm.deserialize(WARN_MESSAGE + "<green>Nothing to display here yet. </green>");
-                sender.sendMessage(message);
+                sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<green>Nothing to display here yet. </green>"));
             }
             else if (args[0].equalsIgnoreCase("help")) {
                 // Default help for now
@@ -105,12 +98,10 @@ public class TagCommand implements CommandExecutor, TabExecutor {
                 double knockbackStrength = Double.parseDouble(args[1]);
 
                 TagSettings.getInstance().setKnockbackStrength(knockbackStrength);
-                message = mm.deserialize(WARN_MESSAGE + "<green> Knockback Strength is now set to </green><red" + knockbackStrength +"</red>" );
-                sender.sendMessage(message);
+                sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<green> Knockback Strength is now set to </green><red" + knockbackStrength +"</red>"));
             }
             if (args[0].equalsIgnoreCase("stats")) {
-                message = mm.deserialize(WARN_MESSAGE + "<green>Nothing to display here yet. </green>");
-                sender.sendMessage(message);
+                sender.sendMessage(mm.deserialize(WARN_MESSAGE + "<green>Nothing to display here yet. </green>"));
             }
         }
 
